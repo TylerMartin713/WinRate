@@ -1,0 +1,65 @@
+
+table users {
+  id int
+  fullName varchar 
+  email varchar
+  isStaff boolean
+}
+
+table employees {
+  id int
+  userId int
+}
+
+table customers {
+  id int
+  address varchar
+ phoneNumber varchar
+ userId int
+}
+
+table posts {
+    id int
+    userId int
+    title varchar
+    description varchar
+    tickerId int 
+    datePosted date
+}
+
+table tickers {
+    id int
+    symbol varchar
+
+}
+
+table userStats {
+  id int
+  customerId int
+  tradeLong int
+  tradeShort int
+  avgTradeDirection decimal
+}
+
+table likes {
+  id int [primary key]
+  userId int  
+  postId int  
+  likedAt date 
+}
+
+
+
+Ref: "tickers"."id" < "posts"."tickerId"
+
+Ref: "users"."id" < "employees"."userId"
+
+Ref: "users"."id" < "customers"."userId"
+
+Ref: "customers"."id" < "userStats"."customerId"
+
+Ref: "users"."id" < "posts"."userId"
+
+Ref: "users"."id" < "likes"."userId"
+
+Ref: "posts"."id" < "likes"."postId"

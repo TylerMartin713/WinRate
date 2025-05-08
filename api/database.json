@@ -1,0 +1,221 @@
+{
+  "users": [
+    {
+      "id": 1,
+      "fullName": "Darth Maul",
+      "email": "MYLEGS@shiiit.com",
+      "isStaff": true
+    },
+    {
+      "id": 2,
+      "fullName": "Darth Sidious",
+      "email": "keeelhim@anger.com",
+      "isStaff": true
+    },
+    {
+      "id": 3,
+      "fullName": "Anakin Skywalker",
+      "email": "kindaEvil@deathstar.com",
+      "isStaff": false
+    },
+    {
+      "id": 4,
+      "fullName": "Luke Skywalker",
+      "email": "NotmyFather@sabers.com",
+      "isStaff": false
+    },
+    {
+      "id": 5,
+      "fullName": "Obi-Wan Kenobi",
+      "email": "Highground@loser.com",
+      "isStaff": false
+    },
+    {
+      "id": 6,
+      "fullName": "Mace Windu",
+      "email": "muthafu***@planes.com",
+      "isStaff": false
+    },
+    {
+      "id": 7,
+      "fullName": "Han Solo",
+      "email": "lukesdaddy@lol.com",
+      "isStaff": false
+    }
+  ],
+  "employees": [
+    {
+      "id": 1,
+      "userId": 1
+    },
+    {
+      "id": 2,
+      "userId": 2
+    }
+  ],
+  "customers": [
+    {
+      "id": 1,
+      "address": "123 Main St",
+      "phoneNumber": "555-1234",
+      "userId": 3
+    },
+    {
+      "id": 2,
+      "address": "456 Elm St",
+      "phoneNumber": "555-5678",
+      "userId": 4
+    },
+    {
+      "id": 3,
+      "address": "789 Oak St",
+      "phoneNumber": "555-9012",
+      "userId": 5
+    },
+    {
+      "id": 4,
+      "address": "321 Pine St",
+      "phoneNumber": "555-3456",
+      "userId": 6
+    },
+    {
+      "id": 5,
+      "address": "654 Maple St",
+      "phoneNumber": "555-7890",
+      "userId": 7
+    }
+  ],
+  "posts": [
+    {
+      "id": 1,
+      "userId": 3,
+      "title": "APPL to the MOON!",
+      "description": "This is the first post by Customer One.",
+      "tickerId": 1,
+      "datePosted": "2025-05-01"
+    },
+    {
+      "id": 2,
+      "userId": 4,
+      "title": "MSFT showing strength",
+      "description": "This is the first post by Customer Two.",
+      "tickerId": 2,
+      "datePosted": "2025-05-02"
+    },
+    {
+      "id": 3,
+      "userId": 5,
+      "title": "GOOGL has earnings??",
+      "description": "This is the first post by Customer Three.",
+      "tickerId": 3,
+      "datePosted": "2025-05-03"
+    },
+    {
+      "id": 4,
+      "userId": 6,
+      "title": "AMZN shining in Q4",
+      "description": "This is the first post by Customer Four.",
+      "tickerId": 4,
+      "datePosted": "2025-05-04"
+    },
+    {
+      "id": 5,
+      "userId": 7,
+      "title": "Can TSLA blast the swamp rats?",
+      "description": "This is the first post by Customer Five.",
+      "tickerId": 5,
+      "datePosted": "2025-05-05"
+    }
+  ],
+  "tickers": [
+    {
+      "id": 1,
+      "symbol": "AAPL"
+    },
+    {
+      "id": 2,
+      "symbol": "MSFT"
+    },
+    {
+      "id": 3,
+      "symbol": "GOOGL"
+    },
+    {
+      "id": 4,
+      "symbol": "AMZN"
+    },
+    {
+      "id": 5,
+      "symbol": "TSLA"
+    }
+  ],
+  "userStats": [
+    {
+      "id": 1,
+      "customerId": 1,
+      "tradeLong": 10,
+      "tradeShort": 5,
+      "avgTradeDirection": 1.5
+    },
+    {
+      "id": 2,
+      "customerId": 2,
+      "tradeLong": 15,
+      "tradeShort": 7,
+      "avgTradeDirection": 2.1
+    },
+    {
+      "id": 3,
+      "customerId": 3,
+      "tradeLong": 20,
+      "tradeShort": 10,
+      "avgTradeDirection": 1.8
+    },
+    {
+      "id": 4,
+      "customerId": 4,
+      "tradeLong": 25,
+      "tradeShort": 12,
+      "avgTradeDirection": 2.3
+    },
+    {
+      "id": 5,
+      "customerId": 5,
+      "tradeLong": 30,
+      "tradeShort": 15,
+      "avgTradeDirection": 2
+    }
+  ],
+  "likes": [
+    {
+      "id": 1,
+      "userId": 3,
+      "postId": 2,
+      "likedAt": "2025-05-06"
+    },
+    {
+      "id": 2,
+      "userId": 4,
+      "postId": 3,
+      "likedAt": "2025-05-06"
+    },
+    {
+      "id": 3,
+      "userId": 5,
+      "postId": 4,
+      "likedAt": "2025-05-06"
+    },
+    {
+      "id": 4,
+      "userId": 6,
+      "postId": 5,
+      "likedAt": "2025-05-06"
+    },
+    {
+      "id": 5,
+      "userId": 7,
+      "postId": 1,
+      "likedAt": "2025-05-06"
+    }
+  ]
+}
