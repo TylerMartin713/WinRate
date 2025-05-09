@@ -5,6 +5,8 @@ import { AllPosts } from "../components/AllPost/AllPosts.jsx";
 import { NewPostForm } from "../components/newPostForm/newPostForm.jsx";
 import { useState, useEffect } from "react";
 import { Profile } from "../components/profile/Profile.jsx";
+import { PostDetails } from "../components/PostDetails/PostDetails.jsx";
+import { EditPostForm } from "../components/EditPostForm/EditPostForm.jsx";
 export const ApplicationViews = () => {
   const [currentUser, setCurrentUser] = useState({});
 
@@ -28,11 +30,21 @@ export const ApplicationViews = () => {
         <Route index element={<Welcome />} />
         <Route path="welcome" element={<Welcome />} />
         <Route path="profile" element={<Profile />} />
+        <Route path="allposts">
+          <Route index element={<AllPosts currentUser={currentUser} />} />
+          <Route
+            path=":postid"
+            element={<PostDetails currentUser={currentUser} />}
+          />
+        </Route>
         <Route
-          path="allposts"
-          element={<AllPosts currentUser={currentUser} />}
+          path="newpost"
+          element={<NewPostForm currentUser={currentUser} />}
         />
-        <Route path="newpost" element={<NewPostForm />} />
+        <Route
+          path="editpost"
+          element={<EditPostForm currentUser={currentUser} />}
+        />
       </Route>
     </Routes>
   );
