@@ -9,10 +9,6 @@ export const AllPosts = ({ currentUser }) => {
 
   const navigate = useNavigate();
 
-  // const getAndSetPosts = () => {
-  //   GetAllPost().then(setAllPosts);
-  // };
-
   useEffect(() => {
     GetAllPost().then(setAllPosts);
   }, []);

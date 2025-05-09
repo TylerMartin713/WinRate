@@ -29,22 +29,26 @@ export const ApplicationViews = () => {
       >
         <Route index element={<Welcome />} />
         <Route path="welcome" element={<Welcome />} />
-        <Route path="profile" element={<Profile />} />
+        <Route path="profile" element={<Profile currentUser={currentUser} />} />
         <Route path="allposts">
           <Route index element={<AllPosts currentUser={currentUser} />} />
           <Route
             path=":postid"
             element={<PostDetails currentUser={currentUser} />}
           />
+          <Route
+            path="/allposts/editpost/:id"
+            element={<EditPostForm currentUser={currentUser} />}
+          />
         </Route>
         <Route
           path="newpost"
           element={<NewPostForm currentUser={currentUser} />}
         />
-        <Route
+        {/* <Route
           path="editpost"
           element={<EditPostForm currentUser={currentUser} />}
-        />
+        /> */}
       </Route>
     </Routes>
   );

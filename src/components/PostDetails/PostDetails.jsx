@@ -2,7 +2,6 @@ import { useEffect, useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 import { GetPostById } from "../../Services/GetPostById.jsx";
 import { DeletePost } from "../../Services/deletePost.jsx";
-import { EditPost } from "../../Services/editPosts.jsx";
 
 export const PostDetails = ({ currentUser }) => {
   const [postDetails, setPostDetails] = useState([]);
@@ -19,8 +18,8 @@ export const PostDetails = ({ currentUser }) => {
     });
   };
 
-  const handleEditPost = () => {
-    navigate(`/editpost`);
+  const handleEditPost = (postid) => {
+    navigate(`/allposts/editpost/${postid}`);
   };
   return (
     <article>

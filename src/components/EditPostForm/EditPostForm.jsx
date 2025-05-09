@@ -1,32 +1,40 @@
 import { useEffect, useState } from "react";
+import { useNavigate, useParams } from "react-router-dom";
 import { GetAllTickers } from "../../Services/getAllTickers.jsx";
-import { useNavigate } from "react-router-dom";
 import { EditPost } from "../../Services/editPosts.jsx";
+import { GetPostByIdEditForm } from "../../Services/GetPostById.jsx";
 
 import "./EditPostForm.css";
 
 export const EditPostForm = ({ currentUser }) => {
   const [title, setTitle] = useState("");
-  const [description, setDescription] = useState("Will this work");
+  const [description, setDescription] = useState("");
   const [selectedTicker, setSelectedTicker] = useState("");
   const [tickers, setTickers] = useState([]);
+  const [post, setPost] = useState([]);
 
   const navigate = useNavigate();
+
+  const { id } = useParams();
+
+  useEffect(() => {
+    GetPostByIdEditForm(id).then(setPost);
+  }, [id]);
 
   useEffect(() => {
     GetAllTickers().then(setTickers);
   }, []);
 
-  const handleSubmitPost = (event) => {
-    event.preventDefault();
-    const editPost = {
+  const handleSubmitPost = () => {
+    const updatePost = {
+      ...post,
       userId: currentUser.id,
       title: title,
       description: description,
       tickerId: Number(selectedTicker),
       datePosted: new Date(),
     };
-    EditPost(editPost)
+    EditPost(id, updatePost)
       .then(() => {
         console.log("You updated your post!");
       })
@@ -36,7 +44,7 @@ export const EditPostForm = ({ currentUser }) => {
   return (
     <article className="new-post-form-container">
       <header>
-        <h1>Edit your post</h1>
+        <h1>Edit your post: {post.id}</h1>
       </header>
       <form className="new-post-form">
         <section>
@@ -46,7 +54,7 @@ export const EditPostForm = ({ currentUser }) => {
             type="text"
             placeholder="Add title"
             required
-            value={title}
+            defaultValue={post.title}
             onChange={(event) => {
               setTitle(event.target.value);
             }}
@@ -59,7 +67,7 @@ export const EditPostForm = ({ currentUser }) => {
             type="text"
             placeholder="post description"
             required
-            value={description}
+            defaultValue={post.description}
             onChange={(event) => {
               setDescription(event.target.value);
             }}
@@ -72,7 +80,9 @@ export const EditPostForm = ({ currentUser }) => {
               setSelectedTicker(event.target.value);
             }}
           >
-            <option>Pick a ticker</option>
+            <option defaultValue={post.ticker?.symbol}>
+              {post.ticker?.symbol}
+            </option>
             {tickers.map((ticker) => {
               return (
                 <option key={ticker.id} value={ticker.id}>
