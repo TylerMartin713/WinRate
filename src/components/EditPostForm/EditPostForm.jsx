@@ -1,31 +1,42 @@
 import { useEffect, useState } from "react";
-import { createNewPost } from "../../Services/newPostService.jsx";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import { GetAllTickers } from "../../Services/getAllTickers.jsx";
-import "./newPostForm.css";
+import { EditPost } from "../../Services/editPosts.jsx";
+import { GetPostByIdEditForm } from "../../Services/GetPostById.jsx";
 
-export const NewPostForm = ({ currentUser }) => {
+import "./EditPostForm.css";
+
+export const EditPostForm = ({ currentUser }) => {
   const [title, setTitle] = useState("");
   const [description, setDescription] = useState("");
   const [selectedTicker, setSelectedTicker] = useState("");
   const [tickers, setTickers] = useState([]);
+  const [post, setPost] = useState([]);
+
   const navigate = useNavigate();
+
+  const { id } = useParams();
+
+  useEffect(() => {
+    GetPostByIdEditForm(id).then(setPost);
+  }, [id]);
 
   useEffect(() => {
     GetAllTickers().then(setTickers);
   }, []);
-  const handleSubmitPost = (event) => {
-    event.preventDefault();
-    const newPost = {
+
+  const handleSubmitPost = () => {
+    const updatePost = {
+      ...post,
       userId: currentUser.id,
       title: title,
       description: description,
       tickerId: Number(selectedTicker),
       datePosted: new Date(),
     };
-    createNewPost(newPost)
+    EditPost(id, updatePost)
       .then(() => {
-        console.log("New post added!");
+        console.log("You updated your post!");
       })
       .then(navigate("/allposts"));
   };
@@ -33,7 +44,7 @@ export const NewPostForm = ({ currentUser }) => {
   return (
     <article className="new-post-form-container">
       <header>
-        <h1>Add a new post</h1>
+        <h1>Edit your post: {post.id}</h1>
       </header>
       <form className="new-post-form">
         <section>
@@ -41,9 +52,9 @@ export const NewPostForm = ({ currentUser }) => {
           <input
             className=""
             type="text"
-            placeholder="add a title"
+            placeholder="Add title"
             required
-            value={title}
+            defaultValue={post.title}
             onChange={(event) => {
               setTitle(event.target.value);
             }}
@@ -56,7 +67,7 @@ export const NewPostForm = ({ currentUser }) => {
             type="text"
             placeholder="post description"
             required
-            value={description}
+            defaultValue={post.description}
             onChange={(event) => {
               setDescription(event.target.value);
             }}
@@ -69,6 +80,9 @@ export const NewPostForm = ({ currentUser }) => {
               setSelectedTicker(event.target.value);
             }}
           >
+            <option defaultValue={post.ticker?.symbol}>
+              {post.ticker?.symbol}
+            </option>
             {tickers.map((ticker) => {
               return (
                 <option key={ticker.id} value={ticker.id}>
@@ -78,7 +92,7 @@ export const NewPostForm = ({ currentUser }) => {
             })}
           </select>
         </section>
-        <button onClick={handleSubmitPost}>Add Post</button>
+        <button onClick={handleSubmitPost}>Edit Post</button>
       </form>
     </article>
   );

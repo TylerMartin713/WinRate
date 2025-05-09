@@ -3,5 +3,5 @@ export const EditPost = (id, editPost) => {
     method: "PUT",
     headers: { "Content-Type": "application/json" },
     body: JSON.stringify(editPost),
-  });
+  }).then((res) => res.json());
 };
