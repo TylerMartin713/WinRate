@@ -2,13 +2,13 @@ import { useEffect, useState } from "react";
 import { createNewPost } from "../../Services/newPostService.jsx";
 import { useNavigate } from "react-router-dom";
 import { GetAllTickers } from "../../Services/getAllTickers.jsx";
-import "./newPostForm.css";
 
 export const NewPostForm = ({ currentUser }) => {
   const [title, setTitle] = useState("");
   const [description, setDescription] = useState("");
   const [selectedTicker, setSelectedTicker] = useState("");
   const [tickers, setTickers] = useState([]);
+
   const navigate = useNavigate();
 
   useEffect(() => {
@@ -21,7 +21,7 @@ export const NewPostForm = ({ currentUser }) => {
       title: title,
       description: description,
       tickerId: Number(selectedTicker),
-      datePosted: new Date(),
+      datePosted: new Date().toISOString().slice(0, 10),
     };
     createNewPost(newPost)
       .then(() => {
@@ -31,55 +31,120 @@ export const NewPostForm = ({ currentUser }) => {
   };
 
   return (
-    <article className="new-post-form-container">
-      <header>
-        <h1>Add a new post</h1>
-      </header>
-      <form className="new-post-form">
-        <section>
-          <label>Post: Title</label>
-          <input
-            className=""
-            type="text"
-            placeholder="add a title"
-            required
-            value={title}
-            onChange={(event) => {
-              setTitle(event.target.value);
-            }}
-          />
-        </section>
-        <section>
-          <label>Post: Body</label>
-          <textarea
-            className=""
-            type="text"
-            placeholder="post description"
-            required
-            value={description}
-            onChange={(event) => {
-              setDescription(event.target.value);
-            }}
-          />
-        </section>
-        <section>
-          <select
-            required
-            onChange={(event) => {
-              setSelectedTicker(event.target.value);
-            }}
-          >
-            {tickers.map((ticker) => {
-              return (
+    <div className="min-h-screen flex items-center justify-center bg-gray-600">
+      <article className="bg-white rounded-xl shadow-2xl p-8 max-w-lg w-full">
+        <form className="space-y-6 p-5" onSubmit={handleSubmitPost}>
+          <header className="mb-4">
+            <h1 className="text-2xl font-bold text-center">Add a New Post</h1>
+          </header>
+          <section>
+            <label className="block text-gray-700 font-semibold mb-1">
+              Post Title
+            </label>
+            <input
+              className="w-full px-3 py-2 border border-gray-300 rounded focus:outline-none focus:ring-2 focus:ring-emerald-400"
+              type="text"
+              placeholder="Add a title"
+              required
+              value={title}
+              onChange={(event) => setTitle(event.target.value)}
+            />
+          </section>
+          <section>
+            <label className="block text-gray-700 font-semibold mb-1">
+              Post Body
+            </label>
+            <textarea
+              className="w-full px-3 py-2 border border-gray-300 rounded focus:outline-none focus:ring-2 focus:ring-emerald-400 resize-none"
+              placeholder="Post description"
+              required
+              value={description}
+              onChange={(event) => setDescription(event.target.value)}
+              rows={4}
+            />
+          </section>
+          <section>
+            <label className="block text-gray-700 font-semibold mb-1">
+              Ticker
+            </label>
+            <select
+              className="w-full px-3 py-2 border border-gray-300 rounded focus:outline-none focus:ring-2 focus:ring-emerald-400"
+              required
+              value={selectedTicker}
+              onChange={(event) => setSelectedTicker(event.target.value)}
+            >
+              <option value="" disabled>
+                Select a ticker
+              </option>
+              {tickers.map((ticker) => (
                 <option key={ticker.id} value={ticker.id}>
                   {ticker.symbol}
                 </option>
-              );
-            })}
-          </select>
-        </section>
-        <button onClick={handleSubmitPost}>Add Post</button>
-      </form>
-    </article>
+              ))}
+            </select>
+          </section>
+          <button
+            type="submit"
+            className="w-full bg-emerald-500 hover:bg-emerald-600 text-white font-bold py-2 px-4 rounded shadow transition"
+          >
+            Add Post
+          </button>
+        </form>
+      </article>
+    </div>
   );
+  // return (
+  //   <article className="new-post-form-container">
+  //     <form className="new-post-form">
+  //       <header className="">
+  //         <h1>Add a new post</h1>
+  //       </header>
+  //       <section>
+  //         <label>Post: Title</label>
+  //         <input
+  //           className=""
+  //           type="text"
+  //           placeholder="add a title"
+  //           required
+  //           value={title}
+  //           onChange={(event) => {
+  //             setTitle(event.target.value);
+  //           }}
+  //         />
+  //       </section>
+  //       <section>
+  //         <label>Post: Body</label>
+  //         <textarea
+  //           className=""
+  //           type="text"
+  //           placeholder="post description"
+  //           required
+  //           value={description}
+  //           onChange={(event) => {
+  //             setDescription(event.target.value);
+  //           }}
+  //         />
+  //       </section>
+  //       <section>
+  //         <select
+  //           required
+  //           onChange={(event) => {
+  //             setSelectedTicker(event.target.value);
+  //           }}
+  //         >
+  //           {tickers.map((ticker) => {
+  //             return (
+  //               <option key={ticker.id} value={ticker.id}>
+  //                 {ticker.symbol}
+  //               </option>
+  //             );
+  //           })}
+  //         </select>
+  //       </section>
+  //       <button className="btn btn-warning" onClick={handleSubmitPost}>
+  //         Add Post
+  //       </button>
+  //     </form>
+  //   </article>
+  // );
 };

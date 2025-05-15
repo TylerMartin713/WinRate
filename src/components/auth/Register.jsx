@@ -1,7 +1,6 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { createUser, getUserByEmail } from "../../Services/userService.jsx";
-import "./Login.css";
 
 export const Register = () => {
   const [customer, setCustomer] = useState({
