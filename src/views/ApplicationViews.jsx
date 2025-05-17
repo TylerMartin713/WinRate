@@ -10,6 +10,7 @@ import { EditPostForm } from "../components/EditPostForm/EditPostForm.jsx";
 import { UserPosts } from "../components/profile/UserPosts.jsx";
 import { LikedPosts } from "../components/profile/LikedPosts.jsx";
 import { UserMedia } from "../components/profile/UserMedia.jsx";
+import { UserStats } from "../components/profile/UserStats.jsx";
 export const ApplicationViews = () => {
   const [currentUser, setCurrentUser] = useState({});
 
@@ -37,10 +38,7 @@ export const ApplicationViews = () => {
         {/*-=====================    PROFILE ROUTE    ========================-*/}
         <Route path="profile" element={<Profile currentUser={currentUser} />}>
           <Route index element={<UserPosts />} />
-          <Route
-            path="userstats"
-            element={<p className="text-white">USER STATS</p>}
-          />
+          <Route path="userstats" element={<UserStats />} />
           <Route
             path="media"
             element={<UserMedia currentUser={currentUser} />}

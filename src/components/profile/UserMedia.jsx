@@ -18,7 +18,7 @@ export const UserMedia = () => {
       {/* {media.map((item) => {
         return <MediaCard key={item.id} media={item} />;
       })} */}
-      <div className="mt-8 w-full">
+      <div className="mt-8 w-full border-3 border-emerald-500">
         <TradingViewWidget />
       </div>
     </div>

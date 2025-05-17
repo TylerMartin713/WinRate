@@ -66,7 +66,7 @@ export const AllPosts = ({ currentUser }) => {
         >
           Prev
         </button>
-        <span className="px-2 py-1">
+        <span className="px-2 py-1 text-white">
           {currentPage} / {totalPages}
         </span>
         <button
