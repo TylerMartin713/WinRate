@@ -4,18 +4,7 @@ table users {
   fullName varchar 
   email varchar
   isStaff boolean
-}
-
-table employees {
-  id int
-  userId int
-}
-
-table customers {
-  id int
-  address varchar
- phoneNumber varchar
- userId int
+  userStatId int
 }
 
 table posts {
@@ -35,7 +24,7 @@ table tickers {
 
 table userStats {
   id int
-  customerId int
+  userId int
   tradeLong int
   tradeShort int
   avgTradeDirection decimal
@@ -48,18 +37,21 @@ table likes {
   likedAt date 
 }
 
+table media {
+  id int
+  userId int
+  media varchar
+}
 
 
 Ref: "tickers"."id" < "posts"."tickerId"
-
-Ref: "users"."id" < "employees"."userId"
-
-Ref: "users"."id" < "customers"."userId"
-
-Ref: "customers"."id" < "userStats"."customerId"
 
 Ref: "users"."id" < "posts"."userId"
 
 Ref: "users"."id" < "likes"."userId"
 
 Ref: "posts"."id" < "likes"."postId"
+
+Ref: "users"."id" < "userStats"."userId"
+
+Ref: "users"."id" < "media"."userId"

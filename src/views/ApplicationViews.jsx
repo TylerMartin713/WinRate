@@ -7,6 +7,9 @@ import { useState, useEffect } from "react";
 import { Profile } from "../components/profile/Profile.jsx";
 import { PostDetails } from "../components/PostDetails/PostDetails.jsx";
 import { EditPostForm } from "../components/EditPostForm/EditPostForm.jsx";
+import { UserPosts } from "../components/profile/UserPosts.jsx";
+import { LikedPosts } from "../components/profile/LikedPosts.jsx";
+import { UserMedia } from "../components/profile/UserMedia.jsx";
 export const ApplicationViews = () => {
   const [currentUser, setCurrentUser] = useState({});
 
@@ -27,14 +30,34 @@ export const ApplicationViews = () => {
           </>
         }
       >
+        {/*-======================    WELCOME ROUTE    ========================-*/}
         <Route index element={<Welcome />} />
         <Route path="welcome" element={<Welcome />} />
+
+        {/*-=====================    PROFILE ROUTE    ========================-*/}
         <Route path="profile" element={<Profile currentUser={currentUser} />}>
+          <Route index element={<UserPosts />} />
+          <Route
+            path="userstats"
+            element={<p className="text-white">USER STATS</p>}
+          />
+          <Route
+            path="media"
+            element={<UserMedia currentUser={currentUser} />}
+          />
+          <Route
+            path="liked"
+            element={<LikedPosts currentUser={currentUser} />}
+          />
+        </Route>
+        {/* <Route path="profile">
           <Route index element={<Profile currentUser={currentUser} />} />
           <Route path="userstats" element={<p>USER STATS</p>} />
           <Route path="media" element={<p>MEDIA</p>} />
           <Route path="liked" element={<p>LIKED POSTS</p>} />
-        </Route>
+        </Route> */}
+
+        {/*-===============    ALL POSTS ROUTE    ==========================-*/}
         <Route path="allposts">
           <Route index element={<AllPosts currentUser={currentUser} />} />
           <Route
@@ -46,14 +69,12 @@ export const ApplicationViews = () => {
             element={<EditPostForm currentUser={currentUser} />}
           />
         </Route>
+
+        {/*-===============    NEW POST ROUTE    ================================-*/}
         <Route
           path="newpost"
           element={<NewPostForm currentUser={currentUser} />}
         />
-        {/* <Route
-          path="editpost"
-          element={<EditPostForm currentUser={currentUser} />}
-        /> */}
       </Route>
     </Routes>
   );

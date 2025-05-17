@@ -4,22 +4,26 @@ import { Post } from "../AllPost/Post.jsx";
 import { GetLikes } from "../../Services/GetLikesService.jsx";
 import { GetUserById } from "../../Services/GetUserProfileStats.jsx";
 import { Outlet } from "react-router-dom";
+import { ProfileNav } from "./ProfileNav.jsx";
 
 export const Profile = ({ currentUser }) => {
   const [posts, setPosts] = useState([]);
   const [likes, setLikes] = useState([]);
   const [user, setUser] = useState({});
-  const userPosts = posts.filter((post) => post.userId === currentUser.id);
+  // const userPosts = posts.filter((post) => post.userId === currentUser.id);
 
   useEffect(() => {
     GetAllPost().then(setPosts);
     GetLikes().then(setLikes);
-    GetUserById(currentUser.id).then(setUser);
+
+    if (currentUser.id) {
+      GetUserById(currentUser.id).then(setUser);
+    }
   }, [currentUser.id]);
 
   return (
     <div className="min-h-screen flex items-center justify-center pt-16 bg-gray-900">
-      <article className="w-full max-w-2xl p-8  rounded-xl shadow-2xl">
+      <article className="w-full max-w-3xl p-8  rounded-xl shadow-2xl">
         <header className="flex justify-between font-bold text-white border-b-2 border-emerald-500">
           <div className="flex">
             {user.fullName}
@@ -82,20 +86,14 @@ export const Profile = ({ currentUser }) => {
             </button>
           </div>
         </section>
+        {/*-==========================    PROFILE NAV BUTTONS MODUILE    =======================-*/}
         <section className="flex justify-evenly mt-5">
-          <button className="text-white rounded-lg p-1 bg-emerald-500 mt-5 cursor-pointer">
-            User Stats
-          </button>
-          <button className="text-white rounded-lg p-1 bg-emerald-500 mt-5 cursor-pointer">
-            Media
-          </button>
-          <button className="text-white rounded-lg p-1 bg-emerald-500 mt-5 cursor-pointer">
-            Likes
-          </button>
+          <ProfileNav />
         </section>
-        {/* =============== Users Posts ======================== */}
+
+        {/* =============== Users Posts NEEDS TO BE NESTED CONTENT ======================== */}
         <section className="mt-5">
-          {userPosts.map((post) => {
+          {/* {userPosts.map((post) => {
             return (
               <Post
                 key={post.id}
@@ -104,10 +102,23 @@ export const Profile = ({ currentUser }) => {
                 likes={likes}
               />
             );
-          })}
+          })} */}
+          <Outlet context={{ posts, likes, currentUser }} />
         </section>
-        <Outlet />
       </article>
     </div>
   );
 };
+
+// -===================== ALL MY BUTTONS JUST IN CASE! ==========================-
+{
+  /* <button className="text-white rounded-lg p-1 bg-emerald-500 mt-5 cursor-pointer">
+            User Stats
+          </button>
+          <button className="text-white rounded-lg p-1 bg-emerald-500 mt-5 cursor-pointer">
+            Media
+          </button>
+          <button className="text-white rounded-lg p-1 bg-emerald-500 mt-5 cursor-pointer">
+            Likes
+          </button> */
+}

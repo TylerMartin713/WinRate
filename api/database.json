@@ -185,6 +185,14 @@
       "symbol": "TSLA"
     }
   ],
+  "media": [
+    {
+      "id": 1,
+      "userId": 3,
+      "tickerId": 5,
+      "picture": "https://www.interactivebrokers.com/campus/wp-content/uploads/sites/2/2024/05/ViewImagePublic-1-700x400.png"
+    }
+  ],
   "userStats": [
     {
       "id": 1,
@@ -434,6 +442,18 @@
       "postId": 8,
       "likedAt": "2025-05-16",
       "id": 37
+    },
+    {
+      "userId": 3,
+      "postId": 5,
+      "likedAt": "2025-05-17",
+      "id": 38
+    },
+    {
+      "userId": 3,
+      "postId": 15,
+      "likedAt": "2025-05-17",
+      "id": 39
     }
   ]
 }
