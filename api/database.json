@@ -3,7 +3,7 @@
     {
       "id": 1,
       "fullName": "Darth Maul",
-      "email": "MYLEGS@shiiit.com",
+      "email": "MYLEGS@nawrr.com",
       "userStatId": 1,
       "isStaff": true,
       "profilePicture": "/img/omniman.png"
@@ -27,7 +27,7 @@
     {
       "id": 4,
       "fullName": "Chester",
-      "email": "NotmyFather@sabers.com",
+      "email": "NotmyFather@yurr.com",
       "userStatId": 4,
       "isStaff": false,
       "profilePicture": "/img/chester.png"
@@ -35,7 +35,7 @@
     {
       "id": 5,
       "fullName": "Art the Clown",
-      "email": "Highground@loser.com",
+      "email": "Highground@anakin.com",
       "userStatId": 5,
       "isStaff": false,
       "profilePicture": "/img/artclown.png"
@@ -97,14 +97,6 @@
       "tickerId": 5,
       "datePosted": "2025-05-15",
       "id": 6
-    },
-    {
-      "userId": 3,
-      "title": "GOOGL is google but it sucks",
-      "description": "HEllo HElloHElloHElloHElloHElloHEllo",
-      "tickerId": 3,
-      "datePosted": "2025-05-09",
-      "id": 7
     },
     {
       "userId": 6,
@@ -295,12 +287,6 @@
     },
     {
       "userId": 3,
-      "postId": 7,
-      "likedAt": "2025-05-13",
-      "id": 10
-    },
-    {
-      "userId": 3,
       "postId": 10,
       "likedAt": "2025-05-13",
       "id": 11
@@ -424,6 +410,30 @@
       "postId": 6,
       "likedAt": "2025-05-15",
       "id": 33
+    },
+    {
+      "userId": 5,
+      "postId": 2,
+      "likedAt": "2025-05-15",
+      "id": 34
+    },
+    {
+      "userId": 5,
+      "postId": 2,
+      "likedAt": "2025-05-15",
+      "id": 35
+    },
+    {
+      "userId": 3,
+      "postId": 2,
+      "likedAt": "2025-05-16",
+      "id": 36
+    },
+    {
+      "userId": 3,
+      "postId": 8,
+      "likedAt": "2025-05-16",
+      "id": 37
     }
   ]
 }

@@ -8,7 +8,7 @@ export const NewPostButton = () => {
   return (
     <div>
       <button
-        className=" bg-emerald-400 border-emerald-600 p-2 mr-5 rounded-2xl cursor-pointer"
+        className="text-white bg-emerald-400 border-emerald-600 p-2 mr-5 rounded-2xl cursor-pointer"
         onClick={handleNewPost}
       >
         New Post

@@ -1,10 +1,12 @@
+// import { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 
 export const NavBar = () => {
+  // const [menuOpen, setMenuOpen] = useState(false);
   const navigate = useNavigate();
 
   return (
-    <ul className="fixed top-0 left-0 w-full z-50 flex gap-2 p-2.5 m-0 bg-gray-500 border-2 rounded ">
+    <ul className="fixed top-0 left-0 w-full z-50 flex gap-2 p-2.5 m-0 bg-emerald-600 border-2 rounded ">
       <li className="flex-1 items-center justify-center gap-2 font-bold text-white">
         <Link className="flex items-center gap-2 rounded" to="/welcome">
           WinRate
@@ -97,54 +99,61 @@ export const NavBar = () => {
       )}
     </ul>
   );
-  //   <nav className="navbar navbar-expand-lg bg-body-tertiary">
-  //     <div className="container-fluid">
-  //       <Link className="navbar-brand" to="/welcome">
-  //         WinRate
-  //       </Link>
-  //       <button
-  //         className="navbar-toggler"
-  //         type="button"
-  //         data-bs-toggle="collapse"
-  //         data-bs-target="#navbarTogglerDemo02"
-  //         aria-controls="navbarTogglerDemo02"
-  //         aria-expanded="false"
-  //         aria-label="Toggle navigation"
-  //       >
-  //         <span className="navbar-toggler-icon"></span>
-  //       </button>
-  //       <div className="collapse navbar-collapse" id="navbarTogglerDemo02">
-  //         <ul className="navbar-nav me-auto mb-2 mb-lg-0">
-  //           <li className="nav-item">
-  //             <Link className="nav-link" to="/profile">
-  //               Profile
-  //             </Link>
-  //           </li>
-  //           <li className="nav-item">
-  //             <Link className="nav-link" to="/allposts">
-  //               News Feed
-  //             </Link>
-  //           </li>
-  //           <li className="nav-item">
-  //             <NewPostButton />
-  //           </li>
-  //           {localStorage.getItem("winrate_user") ? (
-  //             <li className="nav-item">
-  //               <Link
-  //                 className="nav-link"
-  //                 to="/login"
-  //                 onClick={() => {
-  //                   localStorage.removeItem("winrate_user");
-  //                   navigate("/", { replace: true });
-  //                 }}
-  //               >
-  //                 Logout
-  //               </Link>
-  //             </li>
-  //           ) : null}
-  //         </ul>
-  //       </div>
-  //     </div>
-  //   </nav>
-  // );
 };
+
+// return (
+//     <nav className="relative">
+//       {/* Hamburger button */}
+//       <button
+//         className="md:hidden text-white absolute right-4 top-4"
+//         onClick={() => setMenuOpen((open) => !open)}
+//         aria-label="Toggle navigation"
+//       >
+//         <svg
+//           className="w-8 h-8"
+//           fill="none"
+//           stroke="currentColor"
+//           viewBox="0 0 24 24"
+//         >
+//           <path
+//             strokeLinecap="round"
+//             strokeLinejoin="round"
+//             strokeWidth={2}
+//             d={menuOpen ? "M6 18L18 6M6 6l12 12" : "M4 6h16M4 12h16M4 18h16"}
+//           />
+//         </svg>
+//       </button>
+//       {/* Nav links */}
+//       <ul
+//         className={`
+//           fixed top-0 left-0 w-full z-50 bg-emerald-600 border-2 rounded
+//           flex flex-col md:flex-row gap-2 p-2.5 m-0
+//           ${menuOpen ? "block" : "hidden"} md:flex
+//         `}
+//       >
+//         <li className="flex-1 items-center justify-center gap-2 font-bold text-white">
+//           <Link className="flex items-center gap-2 rounded" to="/welcome">
+//             WinRate
+//             {/* ...svg... */}
+//           </Link>
+//         </li>
+//         {/* ...other nav items... */}
+//         {localStorage.getItem("winrate_user") ? (
+//           <li className="flex items-center justify-center gap-2 font-bold text-white">
+//             <Link
+//               to="/login"
+//               onClick={() => {
+//                 localStorage.removeItem("winrate_user");
+//                 navigate("/", { replace: true });
+//               }}
+//             >
+//               Logout
+//             </Link>
+//             {/* ...svg... */}
+//           </li>
+//         ) : (
+//           ""
+//         )}
+//       </ul>
+//     </nav>
+//   );

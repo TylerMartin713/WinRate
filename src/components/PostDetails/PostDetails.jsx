@@ -59,6 +59,7 @@ export const PostDetails = ({ currentUser }) => {
             {postDetails.datePosted}
           </div>
           <div className="flex ">
+            {/* -===============    DELETE BUTTON ========================-*/}
             {(currentUser.id === postDetails.userId || currentUser.isStaff) && (
               <button
                 className="bg-amber-500 hover:bg-amber-600 shadow-gray-700 text-white font-bold mr-2 px-4 py-2 rounded shadow"
@@ -80,6 +81,8 @@ export const PostDetails = ({ currentUser }) => {
                 </svg>
               </button>
             )}
+
+            {/* ===============    EDIT BUTTON ========================*/}
             {currentUser.id === postDetails.userId && !currentUser.isStaff && (
               <button
                 className="bg-emerald-500 hover:bg-emerald-600 shadow-gray-700 text-white font-bold mr-2 px-4 py-2 rounded shadow"
@@ -112,67 +115,4 @@ export const PostDetails = ({ currentUser }) => {
       </div>
     </div>
   );
-  // return (
-  //   <article className="grid">
-  //     <header>
-  //       <h1>{postDetails.title}</h1>
-  //     </header>
-  //     <section>
-  //       <div className="">
-  //         <div className="flex justify-end">
-  //           {postDetails.user?.profilePicture && (
-  //             <img
-  //               src={postDetails.user.profilePicture}
-  //               alt={postDetails.user.fullName}
-  //               className="w-10 h-10 rounded-full object-cover"
-  //             />
-  //           )}
-  //         </div>
-  //         Post by {postDetails.user?.fullName}
-  //         <span>- {postDetails.ticker?.symbol}</span>
-  //       </div>
-  //     </section>
-  //     <section>
-  //       <div>Post Description: {postDetails.description}</div>
-  //       <div></div>
-  //     </section>
-  //     <section>
-  //       <div>Post Date</div>
-  //       {postDetails.datePosted}
-  //     </section>
-  //     <footer className="flex justify-end gap-2">
-  //       <div>
-  //         {currentUser.id === postDetails.userId || currentUser.isStaff ? (
-  //           <button
-  //             className="bg-amber-500 rounded "
-  //             onClick={() => {
-  //               handleDeletePost(postDetails.id);
-  //             }}
-  //           >
-  //             Delete
-  //           </button>
-  //         ) : (
-  //           ""
-  //         )}
-  //       </div>
-  //       <div>
-  //         {currentUser.id === postDetails.userId && !currentUser.isStaff ? (
-  //           <button
-  //             className="font-white bg-emerald-500 rounded "
-  //             onClick={() => {
-  //               handleEditPost(postDetails.id);
-  //             }}
-  //           >
-  //             Edit
-  //           </button>
-  //         ) : (
-  //           ""
-  //         )}
-  //       </div>
-  //       <div className="bg-red-500 rounded ">
-  //         <LikeButtonPost currentUser={currentUser} postid={postid} />
-  //       </div>
-  //     </footer>
-  //   </article>
-  // );
 };

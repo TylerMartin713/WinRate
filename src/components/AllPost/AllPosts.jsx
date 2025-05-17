@@ -60,7 +60,7 @@ export const AllPosts = ({ currentUser }) => {
       </section>
       <div className="flex gap-2 mt-4">
         <button
-          className="px-3 py-1 bg-emerald-500 rounded disabled:opacity-50"
+          className="px-3 py-1 bg-emerald-500 rounded disabled:opacity-50 text-white"
           onClick={() => setCurrentPage((p) => Math.max(p - 1, 1))}
           disabled={currentPage === 1}
         >
@@ -70,7 +70,7 @@ export const AllPosts = ({ currentUser }) => {
           {currentPage} / {totalPages}
         </span>
         <button
-          className="px-3 py-1 bg-emerald-500 rounded disabled:opacity-50"
+          className="px-3 py-1 bg-emerald-500 rounded disabled:opacity-50 text-white"
           onClick={() => setCurrentPage((p) => Math.min(p + 1, totalPages))}
           disabled={currentPage === totalPages}
         >
