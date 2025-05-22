@@ -6,7 +6,8 @@
       "email": "MYLEGS@nawrr.com",
       "userStatId": 1,
       "isStaff": true,
-      "profilePicture": "/img/omniman.png"
+      "profilePicture": "/img/omniman.png",
+      "profileBio": "This Darth Maul bio"
     },
     {
       "id": 2,
@@ -14,7 +15,8 @@
       "email": "keeelhim@anger.com",
       "userStatId": 2,
       "isStaff": true,
-      "profilePicture": "/img/willramos.png"
+      "profilePicture": "/img/willramos.png",
+      "profileBio": "This Will Ramos bio"
     },
     {
       "id": 3,
@@ -22,7 +24,8 @@
       "email": "kindaEvil@deathstar.com",
       "userStatId": 3,
       "isStaff": false,
-      "profilePicture": "/img/vessel.png"
+      "profilePicture": "/img/vessel.png",
+      "profileBio": "a bio of a bio of another bio inside of a bio that surrounds a bio"
     },
     {
       "id": 4,
@@ -30,7 +33,8 @@
       "email": "NotmyFather@yurr.com",
       "userStatId": 4,
       "isStaff": false,
-      "profilePicture": "/img/chester.png"
+      "profilePicture": "/img/chester.png",
+      "profileBio": "This Chester bio"
     },
     {
       "id": 5,
@@ -38,7 +42,8 @@
       "email": "Highground@anakin.com",
       "userStatId": 5,
       "isStaff": false,
-      "profilePicture": "/img/artclown.png"
+      "profilePicture": "/img/artclown.png",
+      "profileBio": "This Art the Clown bio"
     },
     {
       "id": 6,
@@ -46,7 +51,8 @@
       "email": "mace@planes.com",
       "userStatId": 6,
       "isStaff": false,
-      "profilePicture": "/img/oblivion.png"
+      "profilePicture": "/img/oblivion.png",
+      "profileBio": "Oblivion Guy bio"
     },
     {
       "id": 7,
@@ -54,7 +60,8 @@
       "email": "lukesdaddy@lol.com",
       "userStatId": 7,
       "isStaff": false,
-      "profilePicture": "/img/olli.png"
+      "profilePicture": "/img/olli.png",
+      "profileBio": "This Oli bio"
     }
   ],
   "posts": [
@@ -93,9 +100,9 @@
     {
       "userId": 3,
       "title": "Tsla is booming!",
-      "description": "Post about TESLA",
+      "description": "Post about TESLA asdasd",
       "tickerId": 5,
-      "datePosted": "2025-05-15",
+      "datePosted": "2025-05-21",
       "id": 6
     },
     {
@@ -454,6 +461,42 @@
       "postId": 15,
       "likedAt": "2025-05-17",
       "id": 39
+    },
+    {
+      "userId": 7,
+      "postId": 2,
+      "likedAt": "2025-05-20",
+      "id": 40
+    },
+    {
+      "userId": 7,
+      "postId": 3,
+      "likedAt": "2025-05-20",
+      "id": 41
+    },
+    {
+      "userId": 7,
+      "postId": 4,
+      "likedAt": "2025-05-20",
+      "id": 42
+    },
+    {
+      "userId": 7,
+      "postId": 6,
+      "likedAt": "2025-05-20",
+      "id": 43
+    },
+    {
+      "userId": 3,
+      "postId": 3,
+      "likedAt": "2025-05-21",
+      "id": 44
+    },
+    {
+      "userId": 3,
+      "postId": 14,
+      "likedAt": "2025-05-21",
+      "id": 45
     }
   ]
 }

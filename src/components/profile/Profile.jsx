@@ -1,16 +1,17 @@
 import { useEffect, useState } from "react";
 import { GetAllPost } from "../../Services/allPostService.jsx";
-import { Post } from "../AllPost/Post.jsx";
 import { GetLikes } from "../../Services/GetLikesService.jsx";
 import { GetUserById } from "../../Services/GetUserProfileStats.jsx";
 import { Outlet } from "react-router-dom";
 import { ProfileNav } from "./ProfileNav.jsx";
+import { EditProfile } from "./EditProfile.jsx";
 
 export const Profile = ({ currentUser }) => {
   const [posts, setPosts] = useState([]);
   const [likes, setLikes] = useState([]);
   const [user, setUser] = useState({});
-  // const userPosts = posts.filter((post) => post.userId === currentUser.id);
+  const [isModalOpen, setModalOpen] = useState(false);
+  // const navigate = useNavigate();
 
   useEffect(() => {
     GetAllPost().then(setPosts);
@@ -20,6 +21,17 @@ export const Profile = ({ currentUser }) => {
       GetUserById(currentUser.id).then(setUser);
     }
   }, [currentUser.id]);
+
+  // const handleBio = () => {
+  //   //If user has a bio then navigate to the editBio
+  //   if (user.profileBio !== "") {
+  //     navigate("/editbio");
+  //   }
+  //   //If user doesnt have a bio then navigate to the addBio
+  //   else {
+  //     navigate("/addbio");
+  //   }
+  // };
 
   return (
     <div className="min-h-screen flex items-center justify-center pt-16 bg-gray-900">
@@ -64,11 +76,12 @@ export const Profile = ({ currentUser }) => {
         </header>
         {/* This is the USER BIO */}
         <section className="flex justify-between border-b-2 border-emerald-500">
-          <div className=" flex   text-white  test-white w-full mt-5 ">
-            No Bio Yet
-          </div>
+          <div className=" flex text-white w-full mt-5 ">{user.profileBio}</div>
           <div className="flex">
-            <button className="cursor-pointer">
+            <button
+              onClick={() => setModalOpen(true)}
+              className="cursor-pointer "
+            >
               <svg
                 xmlns="http://www.w3.org/2000/svg"
                 fill="none"
@@ -84,6 +97,11 @@ export const Profile = ({ currentUser }) => {
                 />
               </svg>
             </button>
+            <EditProfile
+              user={user}
+              isOpen={isModalOpen}
+              onClose={() => setModalOpen(false)}
+            />
           </div>
         </section>
         {/*-==========================    PROFILE NAV BUTTONS MODUILE    =======================-*/}

@@ -1,7 +1,5 @@
 export const GetLikes = () => {
-  return fetch(`http://localhost:8088/likes?_expand=post`).then((res) =>
-    res.json()
-  );
+  return fetch(`http://localhost:8088/likes`).then((res) => res.json());
 };
 
 export const GetLikesByUserId = (id) => {

@@ -1,8 +1,15 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { PostLikeService } from "../../Services/PostLikeService.jsx";
 
-export const LikeButtonPost = ({ currentUser, postid }) => {
+export const LikeButtonPost = ({ currentUser, postid, likes }) => {
   const [isLiked, setIsLiked] = useState(false);
+  const alreadyLiked = likes.some(
+    (like) => like.userId === currentUser.id && like.postId === Number(postid)
+  );
+
+  useEffect(() => {
+    setIsLiked(alreadyLiked);
+  }, [alreadyLiked]);
 
   const handleLikeChange = () => {
     const like = {
@@ -12,7 +19,6 @@ export const LikeButtonPost = ({ currentUser, postid }) => {
     };
     PostLikeService(like).then(() => {
       setIsLiked(true);
-      console.log(`You liked the post!`);
     });
   };
 

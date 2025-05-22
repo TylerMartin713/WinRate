@@ -4,11 +4,16 @@ import { GetPostById } from "../../Services/GetPostById.jsx";
 import { DeletePost } from "../../Services/deletePost.jsx";
 
 import { LikeButtonPost } from "../Buttons/LikePostButton.jsx";
+import { GetLikes } from "../../Services/GetLikesService.jsx";
 export const PostDetails = ({ currentUser }) => {
   const [postDetails, setPostDetails] = useState([]);
-
+  const [likes, setLikes] = useState([]);
   const navigate = useNavigate();
   const { postid } = useParams();
+
+  useEffect(() => {
+    GetLikes().then(setLikes);
+  }, []);
 
   useEffect(() => {
     GetPostById(postid).then(setPostDetails);
@@ -107,7 +112,11 @@ export const PostDetails = ({ currentUser }) => {
 
             <div>
               {currentUser.id !== postDetails.userId && (
-                <LikeButtonPost currentUser={currentUser} postid={postid} />
+                <LikeButtonPost
+                  currentUser={currentUser}
+                  postid={postid}
+                  likes={likes}
+                />
               )}
             </div>
           </div>

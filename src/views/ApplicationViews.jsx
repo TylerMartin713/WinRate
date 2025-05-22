@@ -11,6 +11,8 @@ import { UserPosts } from "../components/profile/UserPosts.jsx";
 import { LikedPosts } from "../components/profile/LikedPosts.jsx";
 import { UserMedia } from "../components/profile/UserMedia.jsx";
 import { UserStats } from "../components/profile/UserStats.jsx";
+import { EditBio } from "../components/AllUserBio/EditBio.jsx";
+import { AddBio } from "../components/AllUserBio/AddBio.jsx";
 export const ApplicationViews = () => {
   const [currentUser, setCurrentUser] = useState({});
 
@@ -48,12 +50,6 @@ export const ApplicationViews = () => {
             element={<LikedPosts currentUser={currentUser} />}
           />
         </Route>
-        {/* <Route path="profile">
-          <Route index element={<Profile currentUser={currentUser} />} />
-          <Route path="userstats" element={<p>USER STATS</p>} />
-          <Route path="media" element={<p>MEDIA</p>} />
-          <Route path="liked" element={<p>LIKED POSTS</p>} />
-        </Route> */}
 
         {/*-===============    ALL POSTS ROUTE    ==========================-*/}
         <Route path="allposts">
@@ -73,6 +69,9 @@ export const ApplicationViews = () => {
           path="newpost"
           element={<NewPostForm currentUser={currentUser} />}
         />
+        {/*-======================    EDIT AND ADD BIO ROUTES    =================-*/}
+        <Route path="editbio" element={<EditBio />} />
+        <Route path="addbio" element={<AddBio />} />
       </Route>
     </Routes>
   );
