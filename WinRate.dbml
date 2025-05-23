@@ -43,6 +43,13 @@ table media {
   media varchar
 }
 
+table comments {
+  id int
+  userId int
+  postId int
+  description varchar
+}
+
 
 Ref: "tickers"."id" < "posts"."tickerId"
 
@@ -55,3 +62,7 @@ Ref: "posts"."id" < "likes"."postId"
 Ref: "users"."id" < "userStats"."userId"
 
 Ref: "users"."id" < "media"."userId"
+
+Ref: "users"."id" < "comments"."userId"
+
+Ref: "posts"."id" < "comments"."postId"

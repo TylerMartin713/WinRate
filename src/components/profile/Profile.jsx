@@ -34,7 +34,7 @@ export const Profile = ({ currentUser }) => {
   // };
 
   return (
-    <div className="min-h-screen flex items-center justify-center pt-16 bg-gray-900">
+    <div className="min-h-screen flex flex-col items-center pt-16 bg-gray-900">
       <article className="w-full max-w-3xl p-8  rounded-xl shadow-2xl">
         <header className="flex justify-between font-bold text-white border-b-2 border-emerald-500">
           <div className="flex">

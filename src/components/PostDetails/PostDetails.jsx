@@ -2,14 +2,22 @@ import { useEffect, useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 import { GetPostById } from "../../Services/GetPostById.jsx";
 import { DeletePost } from "../../Services/deletePost.jsx";
-
 import { LikeButtonPost } from "../Buttons/LikePostButton.jsx";
 import { GetLikes } from "../../Services/GetLikesService.jsx";
+import { PostComments } from "./PostComments.jsx";
+import { GetComments } from "../../Services/GetComments.jsx";
+
 export const PostDetails = ({ currentUser }) => {
   const [postDetails, setPostDetails] = useState([]);
   const [likes, setLikes] = useState([]);
+  const [comments, setComments] = useState([]);
+
   const navigate = useNavigate();
   const { postid } = useParams();
+
+  useEffect(() => {
+    GetComments().then(setComments);
+  }, []);
 
   useEffect(() => {
     GetLikes().then(setLikes);
@@ -29,8 +37,8 @@ export const PostDetails = ({ currentUser }) => {
     navigate(`/allposts/editpost/${postid}`);
   };
   return (
-    <div className="min-h-screen flex items-center justify-center bg-gray-900">
-      <div className="relative bg-white rounded-xl shadow-lg shadow-emerald-300 p-3 w-full max-w-2xl">
+    <div className="min-h-screen flex flex-col items-center  bg-gray-900">
+      <div className="mt-16 relative bg-white rounded-xl shadow-lg shadow-emerald-300 p-3 w-full max-w-2xl">
         {/* Profile picture in top right */}
         {postDetails.user?.profilePicture && (
           <img
@@ -40,7 +48,7 @@ export const PostDetails = ({ currentUser }) => {
           />
         )}
         <header className="mb-6 flex flex-col items-center">
-          <h1 className="text-3xl font-bold text-gray-800 mb-2 text-center">
+          <h1 className="text-3xl font-bold text-gray-900 mb-2 text-center">
             {postDetails.title}
           </h1>
           <div className="flex items-center gap-3 mt-4">
@@ -58,6 +66,7 @@ export const PostDetails = ({ currentUser }) => {
             {postDetails.description}
           </div>
         </section>
+
         <footer className="flex flex-wrap justify-between gap-3 mt-10">
           <div className="text-gray-500 text-sm content-end">
             <span className="font-semibold">Posted:</span>{" "}
@@ -122,6 +131,14 @@ export const PostDetails = ({ currentUser }) => {
           </div>
         </footer>
       </div>
+      <section className="mt-8 w-full max-w-2xl mx-auto">
+        <PostComments
+          currentUser={currentUser}
+          postDetails={postDetails}
+          comments={comments}
+          postid={parseInt(postid)}
+        />
+      </section>
     </div>
   );
 };

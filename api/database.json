@@ -25,7 +25,7 @@
       "userStatId": 3,
       "isStaff": false,
       "profilePicture": "/img/vessel.png",
-      "profileBio": "a bio of a bio of another bio inside of a bio that surrounds a bio"
+      "profileBio": "Vocals for Sleep Token"
     },
     {
       "id": 4,
@@ -168,6 +168,50 @@
       "tickerId": 4,
       "datePosted": "2025-05-14",
       "id": 15
+    }
+  ],
+  "comments": [
+    {
+      "id": 1,
+      "postId": 2,
+      "userId": 6,
+      "description": "This is a test post",
+      "datePosted": "2025-05-14"
+    },
+    {
+      "id": 2,
+      "postId": 2,
+      "userId": 5,
+      "description": "This is a test post NUMBER TWO",
+      "datePosted": "2025-05-14"
+    },
+    {
+      "userId": 3,
+      "postId": 2,
+      "description": "asdad",
+      "datePosted": "2025-05-22",
+      "id": 3
+    },
+    {
+      "userId": 3,
+      "postId": 3,
+      "description": "SICK POST DOOD!",
+      "datePosted": "2025-05-22",
+      "id": 4
+    },
+    {
+      "userId": 3,
+      "postId": 4,
+      "description": "SICK POST DOOD!",
+      "datePosted": "2025-05-22",
+      "id": 5
+    },
+    {
+      "userId": 3,
+      "postId": 6,
+      "description": "SICK POST DOOD!",
+      "datePosted": "2025-05-22",
+      "id": 6
     }
   ],
   "tickers": [
