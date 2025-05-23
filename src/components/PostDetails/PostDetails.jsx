@@ -2,13 +2,26 @@ import { useEffect, useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 import { GetPostById } from "../../Services/GetPostById.jsx";
 import { DeletePost } from "../../Services/deletePost.jsx";
-
 import { LikeButtonPost } from "../Buttons/LikePostButton.jsx";
+import { GetLikes } from "../../Services/GetLikesService.jsx";
+import { PostComments } from "./PostComments.jsx";
+import { GetComments } from "../../Services/GetComments.jsx";
+
 export const PostDetails = ({ currentUser }) => {
   const [postDetails, setPostDetails] = useState([]);
+  const [likes, setLikes] = useState([]);
+  const [comments, setComments] = useState([]);
 
   const navigate = useNavigate();
   const { postid } = useParams();
+
+  useEffect(() => {
+    GetComments().then(setComments);
+  }, []);
+
+  useEffect(() => {
+    GetLikes().then(setLikes);
+  }, []);
 
   useEffect(() => {
     GetPostById(postid).then(setPostDetails);
@@ -24,8 +37,8 @@ export const PostDetails = ({ currentUser }) => {
     navigate(`/allposts/editpost/${postid}`);
   };
   return (
-    <div className="min-h-screen flex items-center justify-center bg-gray-900">
-      <div className="relative bg-white rounded-xl shadow-lg shadow-emerald-300 p-3 w-full max-w-2xl">
+    <div className="min-h-screen flex flex-col items-center  bg-gray-900">
+      <div className="mt-16 relative bg-white rounded-xl shadow-lg shadow-emerald-300 p-3 w-full max-w-2xl">
         {/* Profile picture in top right */}
         {postDetails.user?.profilePicture && (
           <img
@@ -35,7 +48,7 @@ export const PostDetails = ({ currentUser }) => {
           />
         )}
         <header className="mb-6 flex flex-col items-center">
-          <h1 className="text-3xl font-bold text-gray-800 mb-2 text-center">
+          <h1 className="text-3xl font-bold text-gray-900 mb-2 text-center">
             {postDetails.title}
           </h1>
           <div className="flex items-center gap-3 mt-4">
@@ -53,12 +66,14 @@ export const PostDetails = ({ currentUser }) => {
             {postDetails.description}
           </div>
         </section>
+
         <footer className="flex flex-wrap justify-between gap-3 mt-10">
           <div className="text-gray-500 text-sm content-end">
             <span className="font-semibold">Posted:</span>{" "}
             {postDetails.datePosted}
           </div>
           <div className="flex ">
+            {/* -===============    DELETE BUTTON ========================-*/}
             {(currentUser.id === postDetails.userId || currentUser.isStaff) && (
               <button
                 className="bg-amber-500 hover:bg-amber-600 shadow-gray-700 text-white font-bold mr-2 px-4 py-2 rounded shadow"
@@ -80,6 +95,8 @@ export const PostDetails = ({ currentUser }) => {
                 </svg>
               </button>
             )}
+
+            {/* ===============    EDIT BUTTON ========================*/}
             {currentUser.id === postDetails.userId && !currentUser.isStaff && (
               <button
                 className="bg-emerald-500 hover:bg-emerald-600 shadow-gray-700 text-white font-bold mr-2 px-4 py-2 rounded shadow"
@@ -104,75 +121,24 @@ export const PostDetails = ({ currentUser }) => {
 
             <div>
               {currentUser.id !== postDetails.userId && (
-                <LikeButtonPost currentUser={currentUser} postid={postid} />
+                <LikeButtonPost
+                  currentUser={currentUser}
+                  postid={postid}
+                  likes={likes}
+                />
               )}
             </div>
           </div>
         </footer>
       </div>
+      <section className="mt-8 w-full max-w-2xl mx-auto">
+        <PostComments
+          currentUser={currentUser}
+          postDetails={postDetails}
+          comments={comments}
+          postid={parseInt(postid)}
+        />
+      </section>
     </div>
   );
-  // return (
-  //   <article className="grid">
-  //     <header>
-  //       <h1>{postDetails.title}</h1>
-  //     </header>
-  //     <section>
-  //       <div className="">
-  //         <div className="flex justify-end">
-  //           {postDetails.user?.profilePicture && (
-  //             <img
-  //               src={postDetails.user.profilePicture}
-  //               alt={postDetails.user.fullName}
-  //               className="w-10 h-10 rounded-full object-cover"
-  //             />
-  //           )}
-  //         </div>
-  //         Post by {postDetails.user?.fullName}
-  //         <span>- {postDetails.ticker?.symbol}</span>
-  //       </div>
-  //     </section>
-  //     <section>
-  //       <div>Post Description: {postDetails.description}</div>
-  //       <div></div>
-  //     </section>
-  //     <section>
-  //       <div>Post Date</div>
-  //       {postDetails.datePosted}
-  //     </section>
-  //     <footer className="flex justify-end gap-2">
-  //       <div>
-  //         {currentUser.id === postDetails.userId || currentUser.isStaff ? (
-  //           <button
-  //             className="bg-amber-500 rounded "
-  //             onClick={() => {
-  //               handleDeletePost(postDetails.id);
-  //             }}
-  //           >
-  //             Delete
-  //           </button>
-  //         ) : (
-  //           ""
-  //         )}
-  //       </div>
-  //       <div>
-  //         {currentUser.id === postDetails.userId && !currentUser.isStaff ? (
-  //           <button
-  //             className="font-white bg-emerald-500 rounded "
-  //             onClick={() => {
-  //               handleEditPost(postDetails.id);
-  //             }}
-  //           >
-  //             Edit
-  //           </button>
-  //         ) : (
-  //           ""
-  //         )}
-  //       </div>
-  //       <div className="bg-red-500 rounded ">
-  //         <LikeButtonPost currentUser={currentUser} postid={postid} />
-  //       </div>
-  //     </footer>
-  //   </article>
-  // );
 };

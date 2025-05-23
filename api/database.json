@@ -3,10 +3,11 @@
     {
       "id": 1,
       "fullName": "Darth Maul",
-      "email": "MYLEGS@shiiit.com",
+      "email": "MYLEGS@nawrr.com",
       "userStatId": 1,
       "isStaff": true,
-      "profilePicture": "/img/omniman.png"
+      "profilePicture": "/img/omniman.png",
+      "profileBio": "This Darth Maul bio"
     },
     {
       "id": 2,
@@ -14,7 +15,8 @@
       "email": "keeelhim@anger.com",
       "userStatId": 2,
       "isStaff": true,
-      "profilePicture": "/img/willramos.png"
+      "profilePicture": "/img/willramos.png",
+      "profileBio": "This Will Ramos bio"
     },
     {
       "id": 3,
@@ -22,23 +24,26 @@
       "email": "kindaEvil@deathstar.com",
       "userStatId": 3,
       "isStaff": false,
-      "profilePicture": "/img/vessel.png"
+      "profilePicture": "/img/vessel.png",
+      "profileBio": "Vocals for Sleep Token"
     },
     {
       "id": 4,
       "fullName": "Chester",
-      "email": "NotmyFather@sabers.com",
+      "email": "NotmyFather@yurr.com",
       "userStatId": 4,
       "isStaff": false,
-      "profilePicture": "/img/chester.png"
+      "profilePicture": "/img/chester.png",
+      "profileBio": "This Chester bio"
     },
     {
       "id": 5,
       "fullName": "Art the Clown",
-      "email": "Highground@loser.com",
+      "email": "Highground@anakin.com",
       "userStatId": 5,
       "isStaff": false,
-      "profilePicture": "/img/artclown.png"
+      "profilePicture": "/img/artclown.png",
+      "profileBio": "This Art the Clown bio"
     },
     {
       "id": 6,
@@ -46,7 +51,8 @@
       "email": "mace@planes.com",
       "userStatId": 6,
       "isStaff": false,
-      "profilePicture": "/img/oblivion.png"
+      "profilePicture": "/img/oblivion.png",
+      "profileBio": "Oblivion Guy bio"
     },
     {
       "id": 7,
@@ -54,7 +60,8 @@
       "email": "lukesdaddy@lol.com",
       "userStatId": 7,
       "isStaff": false,
-      "profilePicture": "/img/olli.png"
+      "profilePicture": "/img/olli.png",
+      "profileBio": "This Oli bio"
     }
   ],
   "posts": [
@@ -93,18 +100,10 @@
     {
       "userId": 3,
       "title": "Tsla is booming!",
-      "description": "Post about TESLA",
+      "description": "Post about TESLA asdasd",
       "tickerId": 5,
-      "datePosted": "2025-05-15",
+      "datePosted": "2025-05-21",
       "id": 6
-    },
-    {
-      "userId": 3,
-      "title": "GOOGL is google but it sucks",
-      "description": "HEllo HElloHElloHElloHElloHElloHEllo",
-      "tickerId": 3,
-      "datePosted": "2025-05-09",
-      "id": 7
     },
     {
       "userId": 6,
@@ -171,6 +170,50 @@
       "id": 15
     }
   ],
+  "comments": [
+    {
+      "id": 1,
+      "postId": 2,
+      "userId": 6,
+      "description": "This is a test post",
+      "datePosted": "2025-05-14"
+    },
+    {
+      "id": 2,
+      "postId": 2,
+      "userId": 5,
+      "description": "This is a test post NUMBER TWO",
+      "datePosted": "2025-05-14"
+    },
+    {
+      "userId": 3,
+      "postId": 2,
+      "description": "asdad",
+      "datePosted": "2025-05-22",
+      "id": 3
+    },
+    {
+      "userId": 3,
+      "postId": 3,
+      "description": "SICK POST DOOD!",
+      "datePosted": "2025-05-22",
+      "id": 4
+    },
+    {
+      "userId": 3,
+      "postId": 4,
+      "description": "SICK POST DOOD!",
+      "datePosted": "2025-05-22",
+      "id": 5
+    },
+    {
+      "userId": 3,
+      "postId": 6,
+      "description": "SICK POST DOOD!",
+      "datePosted": "2025-05-22",
+      "id": 6
+    }
+  ],
   "tickers": [
     {
       "id": 1,
@@ -191,6 +234,14 @@
     {
       "id": 5,
       "symbol": "TSLA"
+    }
+  ],
+  "media": [
+    {
+      "id": 1,
+      "userId": 3,
+      "tickerId": 5,
+      "picture": "https://www.interactivebrokers.com/campus/wp-content/uploads/sites/2/2024/05/ViewImagePublic-1-700x400.png"
     }
   ],
   "userStats": [
@@ -292,12 +343,6 @@
       "postId": 5,
       "likedAt": "2025-05-13",
       "id": 9
-    },
-    {
-      "userId": 3,
-      "postId": 7,
-      "likedAt": "2025-05-13",
-      "id": 10
     },
     {
       "userId": 3,
@@ -424,6 +469,78 @@
       "postId": 6,
       "likedAt": "2025-05-15",
       "id": 33
+    },
+    {
+      "userId": 5,
+      "postId": 2,
+      "likedAt": "2025-05-15",
+      "id": 34
+    },
+    {
+      "userId": 5,
+      "postId": 2,
+      "likedAt": "2025-05-15",
+      "id": 35
+    },
+    {
+      "userId": 3,
+      "postId": 2,
+      "likedAt": "2025-05-16",
+      "id": 36
+    },
+    {
+      "userId": 3,
+      "postId": 8,
+      "likedAt": "2025-05-16",
+      "id": 37
+    },
+    {
+      "userId": 3,
+      "postId": 5,
+      "likedAt": "2025-05-17",
+      "id": 38
+    },
+    {
+      "userId": 3,
+      "postId": 15,
+      "likedAt": "2025-05-17",
+      "id": 39
+    },
+    {
+      "userId": 7,
+      "postId": 2,
+      "likedAt": "2025-05-20",
+      "id": 40
+    },
+    {
+      "userId": 7,
+      "postId": 3,
+      "likedAt": "2025-05-20",
+      "id": 41
+    },
+    {
+      "userId": 7,
+      "postId": 4,
+      "likedAt": "2025-05-20",
+      "id": 42
+    },
+    {
+      "userId": 7,
+      "postId": 6,
+      "likedAt": "2025-05-20",
+      "id": 43
+    },
+    {
+      "userId": 3,
+      "postId": 3,
+      "likedAt": "2025-05-21",
+      "id": 44
+    },
+    {
+      "userId": 3,
+      "postId": 14,
+      "likedAt": "2025-05-21",
+      "id": 45
     }
   ]
 }

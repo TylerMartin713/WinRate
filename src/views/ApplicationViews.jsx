@@ -7,6 +7,12 @@ import { useState, useEffect } from "react";
 import { Profile } from "../components/profile/Profile.jsx";
 import { PostDetails } from "../components/PostDetails/PostDetails.jsx";
 import { EditPostForm } from "../components/EditPostForm/EditPostForm.jsx";
+import { UserPosts } from "../components/profile/UserPosts.jsx";
+import { LikedPosts } from "../components/profile/LikedPosts.jsx";
+import { UserMedia } from "../components/profile/UserMedia.jsx";
+import { UserStats } from "../components/profile/UserStats.jsx";
+import { EditBio } from "../components/AllUserBio/EditBio.jsx";
+import { AddBio } from "../components/AllUserBio/AddBio.jsx";
 export const ApplicationViews = () => {
   const [currentUser, setCurrentUser] = useState({});
 
@@ -27,12 +33,25 @@ export const ApplicationViews = () => {
           </>
         }
       >
+        {/*-======================    WELCOME ROUTE    ========================-*/}
         <Route index element={<Welcome />} />
         <Route path="welcome" element={<Welcome />} />
-        <Route path="profile">
-          <Route index element={<Profile currentUser={currentUser} />} />
-          <Route path="/profile/:userid" />
+
+        {/*-=====================    PROFILE ROUTE    ========================-*/}
+        <Route path="profile" element={<Profile currentUser={currentUser} />}>
+          <Route index element={<UserPosts />} />
+          <Route path="userstats" element={<UserStats />} />
+          <Route
+            path="media"
+            element={<UserMedia currentUser={currentUser} />}
+          />
+          <Route
+            path="liked"
+            element={<LikedPosts currentUser={currentUser} />}
+          />
         </Route>
+
+        {/*-===============    ALL POSTS ROUTE    ==========================-*/}
         <Route path="allposts">
           <Route index element={<AllPosts currentUser={currentUser} />} />
           <Route
@@ -44,14 +63,15 @@ export const ApplicationViews = () => {
             element={<EditPostForm currentUser={currentUser} />}
           />
         </Route>
+
+        {/*-===============    NEW POST ROUTE    ================================-*/}
         <Route
           path="newpost"
           element={<NewPostForm currentUser={currentUser} />}
         />
-        {/* <Route
-          path="editpost"
-          element={<EditPostForm currentUser={currentUser} />}
-        /> */}
+        {/*-======================    EDIT AND ADD BIO ROUTES    =================-*/}
+        <Route path="editbio" element={<EditBio />} />
+        <Route path="addbio" element={<AddBio />} />
       </Route>
     </Routes>
   );

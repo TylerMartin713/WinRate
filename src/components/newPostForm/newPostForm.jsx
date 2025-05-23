@@ -31,18 +31,20 @@ export const NewPostForm = ({ currentUser }) => {
   };
 
   return (
-    <div className="min-h-screen flex items-center justify-center bg-gray-600">
-      <article className="bg-white rounded-xl shadow-2xl p-8 max-w-lg w-full">
+    <div className="min-h-screen flex items-center justify-center bg-gray-900">
+      <article className="bg-gray-700 rounded-xl shadow-2xl p-8 max-w-lg w-full">
         <form className="space-y-6 p-5" onSubmit={handleSubmitPost}>
           <header className="mb-4">
-            <h1 className="text-2xl font-bold text-center">Add a New Post</h1>
+            <h1 className="text-2xl font-bold text-center text-white">
+              Add a New Post
+            </h1>
           </header>
           <section>
-            <label className="block text-gray-700 font-semibold mb-1">
+            <label className="block text-white font-semibold mb-1">
               Post Title
             </label>
             <input
-              className="w-full px-3 py-2 border border-gray-300 rounded focus:outline-none focus:ring-2 focus:ring-emerald-400"
+              className="w-full px-3 py-2 text-white border border-emerald-500 rounded focus:outline-none focus:ring-2 focus:ring-emerald-400"
               type="text"
               placeholder="Add a title"
               required
@@ -51,11 +53,11 @@ export const NewPostForm = ({ currentUser }) => {
             />
           </section>
           <section>
-            <label className="block text-gray-700 font-semibold mb-1">
+            <label className="block text-white font-semibold mb-1">
               Post Body
             </label>
             <textarea
-              className="w-full px-3 py-2 border border-gray-300 rounded focus:outline-none focus:ring-2 focus:ring-emerald-400 resize-none"
+              className="w-full px-3 py-2 border text-white border-emerald-500 rounded focus:outline-none focus:ring-2 focus:ring-emerald-400 resize-none"
               placeholder="Post description"
               required
               value={description}
@@ -64,11 +66,11 @@ export const NewPostForm = ({ currentUser }) => {
             />
           </section>
           <section>
-            <label className="block text-gray-700 font-semibold mb-1">
+            <label className="block text-white font-semibold mb-1">
               Ticker
             </label>
             <select
-              className="w-full px-3 py-2 border border-gray-300 rounded focus:outline-none focus:ring-2 focus:ring-emerald-400"
+              className="w-full px-3 py-2 border text-white bg-gray-700 border-emerald-500 rounded focus:outline-none focus:ring-2 focus:ring-emerald-400"
               required
               value={selectedTicker}
               onChange={(event) => setSelectedTicker(event.target.value)}
